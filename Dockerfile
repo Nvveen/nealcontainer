@@ -39,6 +39,5 @@ LABEL devcontainer.metadata='{ \
         "terminal.integrated.defaultProfile.linux": "zsh" \
       } \
     } \
-  }, \
-  "postCreateCommand": "cd /workspaces/dotfiles && bash setup.sh install --only-configs" \
+  } \
 }'
