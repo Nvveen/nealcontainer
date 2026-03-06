@@ -9,6 +9,9 @@ LABEL org.opencontainers.image.documentation="https://github.com/Nvveen/nealcont
 LABEL org.opencontainers.image.vendor="Nvveen"
 LABEL org.opencontainers.image.licenses="MIT"
 
+# Refresh package database and update system
+RUN pacman-key --refresh-keys
+
 # Install sudo
 RUN pacman -Syu --noconfirm sudo zsh starship git curl neovim otf-droid-nerd stow \
     openssh
