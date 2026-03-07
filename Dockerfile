@@ -16,8 +16,8 @@ RUN pacman-key --refresh-keys
 RUN pacman -Syu --noconfirm less sudo zsh starship git curl neovim vim otf-droid-nerd stow \
     openssh
 
-# Set locale to en_US.UTF-8
-RUN sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+# Set locale to en_US.UTF-8 and enable en_US/nl_NL variants
+RUN sed -i 's/^#\(en_US\|nl_NL\)/\1/' /etc/locale.gen && \
     locale-gen && \
     echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
