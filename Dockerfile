@@ -13,8 +13,13 @@ LABEL org.opencontainers.image.licenses="MIT"
 RUN pacman-key --refresh-keys
 
 # Install packages
-RUN pacman -Syu --noconfirm less sudo zsh starship git curl neovim otf-droid-nerd stow \
+RUN pacman -Syu --noconfirm less sudo zsh starship git curl neovim vim otf-droid-nerd stow \
     openssh
+
+# Set locale to en_US.UTF-8
+RUN sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen && \
+    echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
 # Create vscode user with sudo privileges
 RUN useradd -m -s /bin/bash vscode && \
