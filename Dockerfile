@@ -9,17 +9,24 @@ LABEL org.opencontainers.image.documentation="https://github.com/Nvveen/nealcont
 LABEL org.opencontainers.image.vendor="Nvveen"
 LABEL org.opencontainers.image.licenses="MIT"
 
-# Refresh package database and update system
-RUN pacman-key --refresh-keys
+# Fix keyring issues and update system
+RUN pacman -Sy --noconfirm --disable-download-timeout archlinux-keyring && \
+    rm -rf /etc/pacman.d/gnupg && \
+    pacman-key --init && \
+    pacman-key --populate archlinux
 
 # Install packages
 RUN pacman -Syu --noconfirm less sudo zsh starship git curl neovim vim otf-droid-nerd stow \
     openssh
 
 # Set locale to en_US.UTF-8 and enable en_US/nl_NL variants
-RUN sed -i 's/^#\(en_US\|nl_NL\)/\1/' /etc/locale.gen && \
+RUN sed -i 's/^#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen && \
+  sed -i 's/^#nl_NL.UTF-8/nl_NL.UTF-8/' /etc/locale.gen && \
     locale-gen && \
     echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+
+# Set LANG environment variable for the container
+ENV LANG=en_US.UTF-8
 
 # Create vscode user with sudo privileges
 RUN useradd -m -s /bin/bash vscode && \
