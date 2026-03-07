@@ -12,8 +12,8 @@ LABEL org.opencontainers.image.licenses="MIT"
 # Refresh package database and update system
 RUN pacman-key --refresh-keys
 
-# Install sudo
-RUN pacman -Syu --noconfirm sudo zsh starship git curl neovim otf-droid-nerd stow \
+# Install packages
+RUN pacman -Syu --noconfirm less sudo zsh starship git curl neovim otf-droid-nerd stow \
     openssh
 
 # Create vscode user with sudo privileges
