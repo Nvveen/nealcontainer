@@ -44,15 +44,6 @@ USER vscode
 RUN touch /home/vscode/.zshrc
 RUN mkdir -p /home/vscode/.ssh/
 
-# Add aliases for modern tool alternatives
-RUN echo '\n# Modern tool aliases' >> /home/vscode/.zshrc && \
-    echo 'alias grep="rg"' >> /home/vscode/.zshrc && \
-    echo 'alias find="fd"' >> /home/vscode/.zshrc && \
-    echo 'alias cat="bat --paging=never"' >> /home/vscode/.zshrc && \
-    echo 'alias ls="eza"' >> /home/vscode/.zshrc && \
-    echo 'alias top="btm"' >> /home/vscode/.zshrc && \
-    echo 'eval "$(zoxide init zsh)"' >> /home/vscode/.zshrc
-
 LABEL devcontainer.metadata='{ \
   "remoteUser": "vscode", \
   "customizations": { \
