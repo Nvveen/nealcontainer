@@ -29,6 +29,9 @@ RUN sed -i 's/^#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen && \
 # Set LANG environment variable for the container
 ENV LANG=en_US.UTF-8
 
+# Set NEALARCH to identify this as a nealcontainer environment
+ENV NEALARCH=1
+
 # Create vscode user with sudo privileges
 RUN useradd -m -s /bin/bash vscode && \
     usermod -aG wheel vscode && \
