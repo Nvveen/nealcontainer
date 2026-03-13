@@ -45,7 +45,10 @@ RUN touch /etc/machine-id
 USER vscode
 
 RUN touch /home/vscode/.zshrc
-RUN mkdir -p /home/vscode/.ssh/
+RUN mkdir -p /home/vscode/.ssh/ /home/vscode/.local/custom && \
+    chown -R vscode:vscode /home/vscode/.ssh/ /home/vscode/.local/custom
+
+VOLUME /home/vscode/.local/custom
 
 LABEL devcontainer.metadata='{ \
   "remoteUser": "vscode", \
