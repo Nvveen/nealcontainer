@@ -48,6 +48,9 @@ RUN touch /home/vscode/.zshrc
 RUN mkdir -p /home/vscode/.ssh/ /home/vscode/.local/custom && \
     chown -R vscode:vscode /home/vscode/.ssh/ /home/vscode/.local/custom
 
+RUN touch /home/vscode/.local/custom/.zsh_history
+ENV HISTFILE=/home/vscode/.local/custom/.zsh_history
+
 VOLUME /home/vscode/.local/custom
 
 LABEL devcontainer.metadata='{ \
