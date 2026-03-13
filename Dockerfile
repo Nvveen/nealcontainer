@@ -55,7 +55,7 @@ LABEL devcontainer.metadata='{ \
   "customizations": { \
     "vscode": { \
       "extensions": [ \
-        "foxundermoon.shell-format" \
+        "shakram02.bash-beautify" \
       ], \
       "settings": { \
         "terminal.integrated.defaultProfile.linux": "zsh" \
