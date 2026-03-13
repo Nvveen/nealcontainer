@@ -17,7 +17,7 @@ RUN pacman -Sy --noconfirm --disable-download-timeout archlinux-keyring && \
 
 # Install packages
 RUN pacman -Syu --noconfirm less sudo zsh starship git curl neovim vim otf-droid-nerd stow \
-    openssh \
+    openssh jq \
     ripgrep fd bat eza bottom git-delta zoxide fzf
 
 # Set locale to en_US.UTF-8 and enable en_US/nl_NL variants
